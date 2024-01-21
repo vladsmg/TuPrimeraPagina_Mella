@@ -19,10 +19,10 @@ class Estudiante(models.Model) :
 class Curso(models.Model) :
     nombre = models.CharField (max_length=50)
     comision = models.PositiveIntegerField()
-    profeor = models.ForeignKey(Profesor, on_delete=models.CASCADE, null=True, blank=True)  
+    profesor = models.ForeignKey(Profesor, on_delete=models.CASCADE, null=True, blank=True)  
     
     def __str__(self) -> str:
-       return f"{self.nombre} ({self.comision}) - {self.profeor}"
+       return f"{self.nombre} ({self.comision}) - {self.profesor}"
    
 class CursoEstudiante(models.Model):
     curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
