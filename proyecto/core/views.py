@@ -20,7 +20,22 @@ def profesor_create(request):
     else:
         form = forms.ProfesorForm() 
     return render(request, "core/profesor_create.html",{"form": form})    
-        
+
+def estudiante_list(request):
+    consulta = models.Estudiante.objects.all()
+    contexto = {"estudiantes": consulta}
+    return render(request, "core/estudiante_list.html", contexto )
+
+
+def estudiante_create(request):
+    if request.method == "POST":
+        form = forms.EstudianteForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("estudiante_list")
+    else:
+        form = forms.EstudianteForm() 
+    return render(request, "core/estudiante_create.html",{"form": form})           
         
         
         
